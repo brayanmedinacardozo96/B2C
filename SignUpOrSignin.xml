@@ -11,34 +11,12 @@
     <TenantId>miorganizacion1296.onmicrosoft.com</TenantId>
     <PolicyId>B2C_1A_TrustFrameworkExtensions</PolicyId>
   </BasePolicy>
-  <!-- CUSTOM -->
-  <UserJourneys>
-    <UserJourney Id="SignUpOrSignIn" DefaultCpimIssuerTechnicalProfileReferenceId="JwtIssuer">
-      <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.localaccount.signin">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="LocalAccountSigninUsernameExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Username" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <Preconditions>
-            <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
-              <Value>authenticationSource</Value>
-              <Value>localAccountAuthentication</Value>
-              <Action>SkipThisOrchestrationStep</Action>
-            </Precondition>
-          </Preconditions>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="AADUserReadWithUsernameExchange" TechnicalProfileReferenceId="AAD-UserReadUsingUsername" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="3" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-      </OrchestrationSteps>
-    </UserJourney>
-  </UserJourneys>
-  <!-- CUSTOM -->
   <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <!--
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />-->
+    <!--CUSTOM-->
+    <DefaultUserJourney ReferenceId="SignUpOrSignInCustom" />
+    <!--CUSTOM-->
     <!-- CUSTOM -->
     <!--Habilitación de JavaScript-->
     <UserJourneyBehaviors>

@@ -31,3 +31,11 @@ client_id=5db466cf-dce8-4c21-a330-52d0530864bb
 ## eJUEMPLO
 
 https://github.com/azure-ad-b2c/samples/blob/master/policies/username-signup-or-signin/policy/TrustFrameworkExtensions_Username.xml
+
+
+# El orden correcto para subir los archivos de políticas personalizadas de Azure AD B2C es el siguiente:
+
+TrustFrameworkBase.xml
+TrustFrameworkLocalization.xml (si tienes localización personalizada)
+TrustFrameworkExtensions.xml
+SignUpOrSignin.xml (o cualquier archivo de RelyingParty, por ejemplo: B2C_1A_signup_signin.xml)
