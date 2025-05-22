@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrustFrameworkPolicy 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" 
+  PolicySchemaVersion="0.3.0.0" 
+  TenantId="miorganizacion1296.onmicrosoft.com" 
+  PolicyId="B2C_1A_TrustFrameworkExtensions" 
+  PublicPolicyUri="http://miorganizacion1296.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+  <BasePolicy>
+    <TenantId>miorganizacion1296.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_TrustFrameworkLocalization</PolicyId>
+  </BasePolicy>
+  <!-- CUSTOM -->
+  <BuildingBlocks>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.localaccount.signin">
+        <LoadUri>https://dv96.blob.core.windows.net/paginas/login.html</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Sign in page</Item>
+          <Item Key="EnforceJsSecureHeaders">false</Item>
+        </Metadata>
+      </ContentDefinition>
+    </ContentDefinitions>
+  </BuildingBlocks>
+  <!-- CUSTOM -->
+  <ClaimsProviders>
+    <!--
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Username">
+          <DisplayName>Local Account SignIn</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IpAddressClaimReferenceId">ipAddress</Item>
+            <Item Key="ContentDefinitionReferenceId">api.localaccount.signin</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="signInName" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="signInName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="password" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="login-NonInteractive" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="AAD-UserReadUsingUsername">
+          <Metadata>
+            <Item Key="Operation">Read</Item>
+            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="signInName" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="signInName" />
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="givenName" />
+            <OutputClaim ClaimTypeReferenceId="surname" />
+            <OutputClaim ClaimTypeReferenceId="email" />
+          </OutputClaims>
+          <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    -->
+    <!--CUSTOM-->
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Username">
+          <DisplayName>Local Account Signin (Username)</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="SignUpTarget">SignUpWithLogonEmailExchange</Item>
+            <Item Key="setting.operatingMode">Username</Item>
+            <Item Key="ContentDefinitionReferenceId">api.localaccountsignin</Item>
+            <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="signInName" DefaultValue="{OIDC:LoginHint}" AlwaysUseDefaultValue="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="signInName" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="password" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="login-NonInteractive" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <!--CCUSTOM-->
+  </ClaimsProviders>
+  <!--UserJourneys>
+	
+	</UserJourneys-->
+</TrustFrameworkPolicy>

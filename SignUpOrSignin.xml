@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="miorganizacion1296.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin"
+  PublicPolicyUri="http://miorganizacion1296.onmicrosoft.com/B2C_1A_signup_signin">
+  <BasePolicy>
+    <TenantId>miorganizacion1296.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_TrustFrameworkExtensions</PolicyId>
+  </BasePolicy>
+  <!-- CUSTOM -->
+  <UserJourneys>
+    <UserJourney Id="SignUpOrSignIn" DefaultCpimIssuerTechnicalProfileReferenceId="JwtIssuer">
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.localaccount.signin">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="LocalAccountSigninUsernameExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Username" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+              <Value>authenticationSource</Value>
+              <Value>localAccountAuthentication</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AADUserReadWithUsernameExchange" TechnicalProfileReferenceId="AAD-UserReadUsingUsername" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <OrchestrationStep Order="3" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+      </OrchestrationSteps>
+    </UserJourney>
+  </UserJourneys>
+  <!-- CUSTOM -->
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <!-- CUSTOM -->
+    <!--Habilitación de JavaScript-->
+    <UserJourneyBehaviors>
+      <ScriptExecution>Allow</ScriptExecution>
+    </UserJourneyBehaviors>
+    <!-- CUSTOM -->
+    <!--
+    <Endpoints>
+      <Endpoint Id="Token" UserJourneyReferenceId="RedeemRefreshToken" />
+    </Endpoints>
+    -->
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
