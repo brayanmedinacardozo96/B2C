@@ -17,9 +17,6 @@
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.signuporsignin.en" />
           <!-- Add more languages here -->
-          <!--CUSTOM-->
-          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.signuporsignin.es" />
-          <!--CUSTOM-->
         </LocalizedResourcesReferences>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountsignup">
@@ -60,15 +57,12 @@
       </ContentDefinition>
     </ContentDefinitions>
     <Localization Enabled="true">
-      <SupportedLanguages DefaultLanguage="es" MergeBehavior="Append">
+      <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
         <SupportedLanguage>en</SupportedLanguage>
-        <!--CUSTOM Agregar el idoma espaniol-->
-        <SupportedLanguage>es</SupportedLanguage>
-        <!--CUSTOM -->
       </SupportedLanguages>
       <LocalizedResources Id="api.signuporsignin.en">
         <LocalizedStrings>
-          <LocalizedString ElementType="ClaimType" ElementId="signInName" StringId="DisplayName">User Name</LocalizedString>
+          <LocalizedString ElementType="ClaimType" ElementId="signInName" StringId="DisplayName">Email Address</LocalizedString>
           <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
           <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
           <LocalizedString ElementType="ClaimType" ElementId="password" StringId="DisplayName">Password</LocalizedString>
@@ -232,38 +226,6 @@
         </LocalizedStrings>
       </LocalizedResources>
       <!-- Add more languages here -->
-      <!--CUSTOM-->
-      <LocalizedResources Id="api.signuporsignin.es">
-        <LocalizedStrings>
-          <LocalizedString ElementType="ClaimType" ElementId="signInName" StringId="DisplayName">Nombre de usuario</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="heading">Iniciar sesión</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Inicia sesión con tu {0}</LocalizedString>
-          <LocalizedString ElementType="ClaimType" ElementId="password" StringId="DisplayName">Contraseña</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="requiredField_password">Por favor, ingresa tu contraseña</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Por favor, ingresa tu {0}</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="invalid_generic">Por favor, ingresa un {0} válido</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Regístrate ahora</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Regístrate con {0} o {1}</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Regístrate con {0}, {1} o {2}</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">¿Olvidaste tu contraseña?</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="button_signin">Iniciar sesión</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="createaccount_intro">¿No tienes una cuenta?</LocalizedString>
-          <LocalizedString ElementType="UxElement" StringId="unknown_error">Tenemos problemas para iniciar sesión. Por favor, inténtalo más tarde.</LocalizedString>
-          <!-- Uncomment the remember_me only if the keep me signed in is activated. 
-    <LocalizedString ElementType="UxElement" StringId="remember_me">Mantenerme conectado</LocalizedString> -->
-          <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="ResourceOwnerFlowInvalidCredentials">Tu contraseña es incorrecta.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Tu contraseña es incorrecta.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Tu contraseña ha expirado.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">No podemos encontrar tu cuenta.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Parece que usaste una contraseña antigua.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Nombre de usuario o contraseña inválidos.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountDisabled">Tu cuenta ha sido bloqueada. Contacta a soporte para desbloquearla e inténtalo de nuevo.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountLocked">Tu cuenta está temporalmente bloqueada para evitar uso no autorizado. Intenta más tarde.</LocalizedString>
-          <LocalizedString ElementType="ErrorMessage" StringId="AADRequestsThrottled">Hay demasiadas solicitudes en este momento. Por favor, espera un momento e inténtalo de nuevo.</LocalizedString>
-        </LocalizedStrings>
-      </LocalizedResources>
-      <!--CUSTOM-->
     </Localization>
   </BuildingBlocks>
 </TrustFrameworkPolicy>

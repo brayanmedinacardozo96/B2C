@@ -52,14 +52,12 @@
         <UserHelpText>Object identifier (ID) of the user object in Azure AD.</UserHelpText>
       </ClaimType>
       <!-- Claims needed for local accounts. -->
-      <!--CCUSTOM -->
       <ClaimType Id="signInName">
         <DisplayName>Sign in name</DisplayName>
         <DataType>string</DataType>
         <UserHelpText/>
         <UserInputType>TextBox</UserInputType>
       </ClaimType>
-      <!--CCUSTOM -->
       <ClaimType Id="signInNames.emailAddress">
         <DisplayName>Email Address</DisplayName>
         <DataType>string</DataType>
@@ -268,6 +266,17 @@
         <UserHelpText>Your surname (also known as family name or last name).</UserHelpText>
         <UserInputType>TextBox</UserInputType>
       </ClaimType>
+      <ClaimType Id="emailVerificationCode">
+        <DisplayName>Verification Code</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Enter the verification code sent to your email address.</UserHelpText>
+      </ClaimType>
+      <ClaimType Id="UserId">
+        <DisplayName>User ID</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Enter your user ID.</UserHelpText>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
     </ClaimsSchema>
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -395,12 +404,9 @@
           <DisplayName>Local Account SignIn</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!--CONFIGURAR CON APLICACION-->
-            <Item Key="client_id">5db466cf-dce8-4c21-a330-52d0530864bb</Item>
-            <!--CONFIGURAR CON APLICACION-->
             <Item Key="ProviderName">https://sts.windows.net/</Item>
-            <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
-            <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/miorganizacion1296.onmicrosoft.com/.well-known/openid-configuration</Item>
+            <Item Key="authorization_endpoint">https://login.microsoftonline.com/miorganizacion1296.onmicrosoft.com/oauth2/token</Item>
             <Item Key="response_types">id_token</Item>
             <Item Key="response_mode">query</Item>
             <Item Key="scope">email openid</Item>
@@ -592,7 +598,7 @@
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
           <Metadata>
             <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-            <Item Key="ContentDefinitionReferenceId">api.localaccount.signup</Item>
+            <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
@@ -781,7 +787,6 @@
       </TechnicalProfiles>
     </ClaimsProvider>
   </ClaimsProviders>
-  <!--CUSTOM ESTE ES EL QUE SE UTILIZA PARA EL LOGIN-->
   <UserJourneys>
     <UserJourney Id="SignUpOrSignIn">
       <OrchestrationSteps>
