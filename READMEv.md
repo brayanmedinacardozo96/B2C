@@ -39,3 +39,8 @@ TrustFrameworkBase.xml
 TrustFrameworkLocalization.xml (si tienes localización personalizada)
 TrustFrameworkExtensions.xml
 SignUpOrSignin.xml (o cualquier archivo de RelyingParty, por ejemplo: B2C_1A_signup_signin.xml)
+
+
+# integrates with Google Captcha
+
+https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration

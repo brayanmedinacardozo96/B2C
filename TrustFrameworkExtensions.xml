@@ -14,7 +14,8 @@
   <BuildingBlocks>
     <ContentDefinitions>
       <ContentDefinition Id="api.localaccountsignin">
-        <LoadUri>~/tenant/templates/AzureBlue/selfasserted.cshtml</LoadUri>
+        <!--<LoadUri>~/tenant/templates/AzureBlue/selfasserted.cshtml</LoadUri>-->
+        <LoadUri>https://dv96.blob.core.windows.net/paginas/login.html</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
         <Metadata>

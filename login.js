@@ -215,8 +215,6 @@ function captch() {
             input.value = captchaResponse;
         });
     }
-
-
 }
 
 
