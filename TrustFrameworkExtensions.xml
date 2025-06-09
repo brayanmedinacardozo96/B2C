@@ -60,6 +60,7 @@
             <OutputClaim ClaimTypeReferenceId="g-recaptcha-response-toms" />
           </OutputClaims>
           <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="login-Recaptcha" />
             <ValidationTechnicalProfile ReferenceId="login-NonInteractive" />
           </ValidationTechnicalProfiles>
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
