@@ -42,7 +42,6 @@ namespace BHD.Function
                     { "response", captchaToken }
                 };
 
-
                 var res = await client.PostAsync(_recaptchaUrl, new FormUrlEncodedContent(dict));
                 var contents = await res.Content.ReadAsStringAsync();
 
