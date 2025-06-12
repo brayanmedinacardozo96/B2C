@@ -1,3 +1,5 @@
+let captcha_passed = false;
+
 setTimeout(() => {
     buildSelectLanguage();
     togglePassword();
@@ -163,6 +165,11 @@ function buildCloseEye() {
     return svg
 }
 
+function on_captcha_filled() {
+    captcha_passed = true;
+    let response = grecaptcha.getResponse();
+    document.getElementById("g-recaptcha-response-toms").value = response;
+}
 
 function captch() {
 
@@ -173,6 +180,7 @@ function captch() {
         // Crea el div de reCAPTCHA
         const recaptchaDiv = document.createElement("div");
         recaptchaDiv.className = "g-recaptcha";
+        recaptchaDiv.setAttribute("data-callback", "on_captcha_filled");
         recaptchaDiv.setAttribute("data-sitekey", "6LeHAEIrAAAAADIBNwxGhKQZnLbKUtbJQt0YiNaL");
         // Inserta el reCAPTCHA antes del botón submit
         // const submitBtn = form.querySelector("button[type=submit], input[type=submit]");
@@ -216,7 +224,6 @@ function captch() {
         });
     }
 }
-
 
 // ReCAPTCHA v3
 function executeRecaptchaAndSubmit(e) {

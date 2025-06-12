@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Captcha_Handler_API_AzFunc": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7086",
+      "launchBrowser": false
+    }
+  }
+}

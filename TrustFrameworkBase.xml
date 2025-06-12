@@ -277,6 +277,46 @@
         <UserHelpText>Enter your user ID.</UserHelpText>
         <UserInputType>TextBox</UserInputType>
       </ClaimType>
+      <!--Captcha GOOGLE-->
+      <ClaimType Id="g-recaptcha-response-toms">
+        <DisplayName>g-recaptcha-response-toms</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Parameter provided by the ATP Recapcha service for the response</UserHelpText>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="captcha">
+        <DisplayName>captcha</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText/>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="recaptchaSecret">
+        <DisplayName>reCAPTCHA Secret</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Secret key for Google reCAPTCHA validation.</UserHelpText>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+      <ClaimType Id="success">
+        <DisplayName>reCAPTCHA Success</DisplayName>
+        <DataType>boolean</DataType>
+        <UserHelpText>Indicates if reCAPTCHA validation was successful.</UserHelpText>
+      </ClaimType>
+      <ClaimType Id="challenge_ts">
+        <DisplayName>Challenge Timestamp</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Timestamp of the reCAPTCHA challenge.</UserHelpText>
+      </ClaimType>
+      <ClaimType Id="hostname">
+        <DisplayName>Hostname</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Hostname returned by reCAPTCHA verification.</UserHelpText>
+      </ClaimType>
+      <ClaimType Id="error-codes">
+        <DisplayName>Error Codes</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Error codes returned by reCAPTCHA verification.</UserHelpText>
+      </ClaimType>
+      <!--Captcha GOOGLE-->
     </ClaimsSchema>
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
